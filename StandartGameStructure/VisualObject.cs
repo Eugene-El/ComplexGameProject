@@ -8,10 +8,14 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace StandartGameStructure
 {
-    class VisualObject : GameObject
+    public class VisualObject : GameObject
     {
         public Image Image { get; set; }
 
+        public VisualObject()
+        {
+            Image = new Image();
+        }
 
         public override void LoadContent()
         {

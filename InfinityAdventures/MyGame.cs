@@ -9,7 +9,18 @@ namespace InfinityAdventures
     {
         public MyGame()
         {
-            ScreenManager.Instance.CurrnetScreen.Background.Path = "player";
+            SetWindowSize(1280, 720);
+            VisualObject player = new VisualObject();
+            player.Image.Path = "player";
+            player.Image.Position = new Vector2(100, 100);
+            ScreenManager.Instance.CurrnetScreen.ObjectsList.Add(player);
+
+            TextObject TO = new TextObject();
+            TO.Text = "Hello world!";
+            TO.Position = new Vector2(200, 100);
+            ScreenManager.Instance.CurrnetScreen.ObjectsList.Add(TO);
+            TO.Color = Color.Black;
+
         }
 
         protected override void Update(GameTime gameTime)

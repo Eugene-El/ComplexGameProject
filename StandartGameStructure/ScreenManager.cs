@@ -44,7 +44,7 @@ namespace StandartGameStructure
         public void LoadContent(ContentManager content)
         {
             Content = new ContentManager(content.ServiceProvider, "Content");
-
+            
             CurrnetScreen.LoadContent();
         }
 

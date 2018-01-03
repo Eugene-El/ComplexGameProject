@@ -11,9 +11,11 @@ namespace StandartGameStructure
 {
     public class BasicGame : Game
     {
+        public static int Width;
+        public static int Height;
+
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        
 
         public BasicGame()
         {
@@ -30,7 +32,7 @@ namespace StandartGameStructure
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
-
+            
             ScreenManager.Instance.GraphicsDevice = GraphicsDevice;
             ScreenManager.Instance.SpriteBatch = spriteBatch;
             ScreenManager.Instance.LoadContent(Content);
@@ -44,9 +46,6 @@ namespace StandartGameStructure
 
         protected override void Update(GameTime gameTime)
         {
-            //if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-            //    Exit();
-
             ScreenManager.Instance.Update(gameTime);
 
             base.Update(gameTime);
@@ -68,6 +67,9 @@ namespace StandartGameStructure
             graphics.PreferredBackBufferWidth = width;
             graphics.PreferredBackBufferHeight = height;
             graphics.ApplyChanges();
+            Width = width;
+            Height = height;
         }
+
     }
 }

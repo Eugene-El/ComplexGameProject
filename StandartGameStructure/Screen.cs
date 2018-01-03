@@ -11,6 +11,7 @@ namespace StandartGameStructure
     public class Screen : IVisualContent
     {
         public List<GameObject> ObjectsList { get; set; }
+
         public Image Background { get; set; }
 
         public Screen()
