@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 15.0.26430.15
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfinityAdventures", "InfinityAdventures\InfinityAdventures.csproj", "{03F20826-1A9E-4675-BB74-9F29C26C896F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{62F9E4BD-C573-4E41-B2E0-877F51F297F2} = {62F9E4BD-C573-4E41-B2E0-877F51F297F2}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StandartGameStructure", "StandartGameStructure\StandartGameStructure.csproj", "{62F9E4BD-C573-4E41-B2E0-877F51F297F2}"
 EndProject
