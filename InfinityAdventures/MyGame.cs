@@ -10,13 +10,13 @@ namespace InfinityAdventures
         public MyGame()
         {
             SetWindowSize(1280, 720);
-            VisualObject player = new VisualObject();
-            player.Image.Path = "player";
-            player.Image.Position = new Vector2(100, 100);
+            VisualImage player = new VisualImage();
+            player.Path = "player";
+            player.Position = new Vector2(100, 100);
             ScreenManager.Instance.CurrnetScreen.ObjectsList.Add(player);
 
-            TextObject TO = new TextObject();
-            TO.Text = "Hello world!";
+            VisualText TO = new VisualText();
+            TO.Text = "Hello world! 1234567890";
             TO.Position = new Vector2(200, 100);
             ScreenManager.Instance.CurrnetScreen.ObjectsList.Add(TO);
             TO.Color = Color.Black;

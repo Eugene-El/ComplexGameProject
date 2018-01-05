@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace StandartGameStructure
 {
-    interface IVisualContent
+    interface IGameContent
     {
         void LoadContent();
         void UnloadContent();
