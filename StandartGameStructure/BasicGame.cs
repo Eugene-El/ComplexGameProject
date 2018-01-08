@@ -11,9 +11,6 @@ namespace StandartGameStructure
 {
     public class BasicGame : Game
     {
-        public static int Width;
-        public static int Height;
-
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
@@ -21,12 +18,13 @@ namespace StandartGameStructure
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+
+            ScreenManager.Instance.WindowSizeChanged += setWindowSize;
         }
 
         protected override void Initialize()
         {
             base.Initialize();
-
         }
 
         protected override void LoadContent()
@@ -62,13 +60,11 @@ namespace StandartGameStructure
             base.Draw(gameTime);
         }
 
-        protected void SetWindowSize(int width, int height)
+        private void setWindowSize(Object sender, EventArgs args)
         {
-            graphics.PreferredBackBufferWidth = width;
-            graphics.PreferredBackBufferHeight = height;
+            graphics.PreferredBackBufferWidth = ScreenManager.Instance.Width;
+            graphics.PreferredBackBufferHeight = ScreenManager.Instance.Height;
             graphics.ApplyChanges();
-            Width = width;
-            Height = height;
         }
 
     }

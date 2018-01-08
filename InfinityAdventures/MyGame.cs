@@ -9,7 +9,7 @@ namespace InfinityAdventures
     {
         public MyGame()
         {
-            SetWindowSize(1280, 720);
+            ScreenManager.Instance.Dimensions = new Vector2(1280, 720);
             ScreenManager.Instance.CurrnetScreen.Background.Path = "scorpion";
 
             //VisualImage player = new VisualImage();
@@ -19,7 +19,7 @@ namespace InfinityAdventures
 
             VisualText TO = new VisualText("Font/IntroScreenFont");
             TO.Text = "Infinity\n   Adventures";
-            TO.Position = new Vector2(Width/2, Height/2);
+            TO.Position = ScreenManager.Instance.CenterOfScreen;
             ScreenManager.Instance.CurrnetScreen.ObjectsList.Add(TO);
             TO.Color = Color.White;
 

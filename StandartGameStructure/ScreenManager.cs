@@ -32,6 +32,53 @@ namespace StandartGameStructure
 
         //
 
+        // Window size changing
+
+        private int width, height;
+        public Vector2 Dimensions
+        {
+            get
+            {
+                return new Vector2(Width, Height);
+            }
+            set
+            {
+                Width = (int)value.X;
+                Height = (int)value.Y;
+            }
+        }
+        public int Width
+        {
+            get
+            {
+                return width;
+            }
+            set
+            {
+                width = value;
+                WindowSizeChanged?.Invoke(this, new EventArgs());
+            }
+        }
+        public int Height
+        {
+            get
+            {
+                return height;
+            }
+            set
+            {
+                height = value;
+                WindowSizeChanged?.Invoke(this, new EventArgs());
+            }
+        }
+
+        public event EventHandler WindowSizeChanged;
+
+
+        //
+
+        public Vector2 CenterOfScreen { get { return Dimensions / 2; } }
+
         public Screen CurrnetScreen { get; set; }
 
         public ContentManager Content { get; private set; }
