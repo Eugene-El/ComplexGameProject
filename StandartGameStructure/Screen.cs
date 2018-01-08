@@ -12,12 +12,12 @@ namespace StandartGameStructure
     {
         public List<AbstractVisualObject> ObjectsList { get; set; }
 
-        public VisualImage Background { get; set; }
+        public Background Background { get; set; }
 
         public Screen()
         {
             ObjectsList = new List<AbstractVisualObject>();
-            Background = new VisualImage();
+            Background = new Background();
         }
 
 

@@ -10,16 +10,18 @@ namespace InfinityAdventures
         public MyGame()
         {
             SetWindowSize(1280, 720);
-            VisualImage player = new VisualImage();
-            player.Path = "player";
-            player.Position = new Vector2(100, 100);
-            ScreenManager.Instance.CurrnetScreen.ObjectsList.Add(player);
+            ScreenManager.Instance.CurrnetScreen.Background.Path = "scorpion";
 
-            VisualText TO = new VisualText();
-            TO.Text = "Hello world! 1234567890";
-            TO.Position = new Vector2(200, 100);
+            //VisualImage player = new VisualImage();
+            //player.Path = "player";
+            //player.Position = new Vector2(100, 100);
+            //ScreenManager.Instance.CurrnetScreen.ObjectsList.Add(player);
+
+            VisualText TO = new VisualText("Font/IntroScreenFont");
+            TO.Text = "Infinity\n   Adventures";
+            TO.Position = new Vector2(Width/2, Height/2);
             ScreenManager.Instance.CurrnetScreen.ObjectsList.Add(TO);
-            TO.Color = Color.Black;
+            TO.Color = Color.White;
 
         }
 

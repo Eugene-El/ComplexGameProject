@@ -41,7 +41,7 @@ namespace StandartGameStructure
             origin = new Vector2(Rect.Width / 2, Rect.Height / 2);
 
             if (texture != null)
-                spriteBatch.Draw(texture, Position + origin, Rect, Color.White * Alpha, 0.0f, origin, Scale, SpriteEffects.None, 0.0f);
+                spriteBatch.Draw(texture, Position, Rect, Color.White * Alpha, 0.0f, origin, Scale, SpriteEffects.None, 0.0f);
         }
     }
 }

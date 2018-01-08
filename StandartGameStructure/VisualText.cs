@@ -13,10 +13,10 @@ namespace StandartGameStructure
         
         private SpriteFont spriteFont;
 
-        public VisualText() : base()
+        public VisualText(string font) : base()
         {
             Text = String.Empty;
-            Font = "Font/mainFont";
+            Font = font;
             Color = Color.White;
         }
 

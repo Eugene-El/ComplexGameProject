@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="StandartGameStructure.AbstractVisualObject">
+    <Position X="1.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAQCEAAAAAAgAgAgAAIAAAAAACAAAhAAAAAAAAAAAAQ=</HashCode>
+      <FileName>AbstractVisualObject.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="StandartGameStructure.BasicGame">
+    <Position X="6" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAEEAABAAAAwAAAAAAAEAAAAAEAAgAAAAAAAAAAAQ=</HashCode>
+      <FileName>BasicGame.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StandartGameStructure.Screen" BaseTypeListCollapsed="true">
+    <Position X="9.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAEAAAAAAAAgAAAAAAAAAAAAgAAAAAAAAgAAAAAAQ=</HashCode>
+      <FileName>Screen.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="StandartGameStructure.ScreenManager">
+    <Position X="7.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAEAAAAgAAAgAAAAAAAAAAAABAAAAQQAAEAAAAAAQ=</HashCode>
+      <FileName>ScreenManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StandartGameStructure.VisualImage">
+    <Position X="2.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>VisualImage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StandartGameStructure.VisualText">
+    <Position X="0.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAiAACAAQ=</HashCode>
+      <FileName>VisualText.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="StandartGameStructure.IGameContent">
+    <Position X="3.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAEAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>IGameContent.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
