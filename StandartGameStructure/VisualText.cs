@@ -13,11 +13,18 @@ namespace StandartGameStructure
         
         private SpriteFont spriteFont;
 
-        public VisualText(string font) : base()
+        public VisualText(string font, string text, Color color) : base() { Initialize(font, text, color); }
+        public VisualText(string font, string text) : this(font, text, Color.White) { }
+        public VisualText(string font) : this(font, String.Empty) { }
+        public VisualText(Vector2 position, Vector2 scale, float rotation, float alpha, string font, string text, Color color) : base(position, scale, rotation, alpha) { Initialize(font, text, color); }
+        public VisualText(Vector2 position, string font, string text, Color color) : base(position) { Initialize(font, text, color); }
+        public VisualText(Vector2 position, float rotation, string font, string text, Color color) : base(position, rotation) { Initialize(font, text, color); }
+
+        private void Initialize(string font, string text, Color color)
         {
-            Text = String.Empty;
+            Text = text;
             Font = font;
-            Color = Color.White;
+            Color = color;
         }
 
         //

@@ -12,16 +12,11 @@ namespace InfinityAdventures
             ScreenManager.Instance.Dimensions = new Vector2(1280, 720);
             ScreenManager.Instance.CurrnetScreen.Background.Path = "scorpion";
 
-            //VisualImage player = new VisualImage();
-            //player.Path = "player";
-            //player.Position = new Vector2(100, 100);
-            //ScreenManager.Instance.CurrnetScreen.ObjectsList.Add(player);
+            VisualImage player = new VisualImage(new Vector2(1200, 50), new Vector2(3), 180, 1.0f, "player");
+            ScreenManager.Instance.CurrnetScreen.ObjectsList.Add(player);
 
-            VisualText TO = new VisualText("Font/IntroScreenFont");
-            TO.Text = "Infinity\n   Adventures";
-            TO.Position = ScreenManager.Instance.CenterOfScreen;
+            VisualText TO = new VisualText(ScreenManager.Instance.CenterOfScreen, -10, "Font/IntroScreenFont", "Infinity\n   Adventures", Color.Wheat);
             ScreenManager.Instance.CurrnetScreen.ObjectsList.Add(TO);
-            TO.Color = Color.White;
 
         }
 

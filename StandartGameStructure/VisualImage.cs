@@ -9,10 +9,12 @@ namespace StandartGameStructure
     {
         public string Path { get; set; }
 
-        public VisualImage() : base()
-        {
-            Path = String.Empty;
-        }
+        public VisualImage(string path) : base() { Path = path; }
+        public VisualImage() : this(String.Empty) { }
+        public VisualImage(Vector2 position, Vector2 scale, float rotation, float alpha, string path) : base(position, scale, rotation, alpha) { Path = path; }
+        public VisualImage(Vector2 position, string path) : base(position) { Path = path; }
+
+
 
         //
 

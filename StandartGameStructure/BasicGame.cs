@@ -19,7 +19,9 @@ namespace StandartGameStructure
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
 
-            ScreenManager.Instance.WindowSizeChanged += setWindowSize;
+            ScreenManager.Instance.WindowSizeChanged += SetWindowSize;
+
+            ScreenManager.Instance.Dimensions = new Vector2(600, 400);
         }
 
         protected override void Initialize()
@@ -60,7 +62,7 @@ namespace StandartGameStructure
             base.Draw(gameTime);
         }
 
-        private void setWindowSize(Object sender, EventArgs args)
+        private void SetWindowSize(Object sender, EventArgs args)
         {
             graphics.PreferredBackBufferWidth = ScreenManager.Instance.Width;
             graphics.PreferredBackBufferHeight = ScreenManager.Instance.Height;
