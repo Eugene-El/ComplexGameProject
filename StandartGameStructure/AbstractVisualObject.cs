@@ -31,7 +31,25 @@ namespace StandartGameStructure
         protected Texture2D texture;
         protected ContentManager content;
         protected RenderTarget2D renderTarget;
-        protected Vector2 origin;
+
+        //
+
+        private Vector2 origin;
+        public OriginPosition OriginPosition { get; set; }
+        public Vector2 Origin
+        {
+            get
+            {
+                return origin;
+            }
+            set
+            {
+                OriginPosition = OriginPosition.CustomPosition;
+                origin = value;
+            }
+        }
+
+        //
 
         public AbstractVisualObject(Vector2 position, Vector2 scale, Rectangle rect, float rotation, float alpha)
         {
@@ -40,6 +58,7 @@ namespace StandartGameStructure
             Rect = rect;
             Alpha = alpha;
             Rotation = rotation;
+            OriginPosition = OriginPosition.Center;
 
             ID = ++ObjectsCount;
         }
@@ -63,10 +82,48 @@ namespace StandartGameStructure
 
         public virtual void Draw(SpriteBatch spriteBatch)
         {
-            origin = new Vector2(Rect.Width / 2, Rect.Height / 2);
+            switch (OriginPosition)
+            {
+                case OriginPosition.LeftUpperCorner:
+                    origin = Vector2.Zero;
+                    break;
+
+                case OriginPosition.UpperSide:
+                    origin = new Vector2(Rect.Width / 2, 0);
+                    break;
+
+                case OriginPosition.RightUpperCorner:
+                    origin = new Vector2(Rect.Width, 0);
+                    break;
+
+                case OriginPosition.LeftSide:
+                    origin = new Vector2(0, Rect.Height / 2);
+                    break;
+
+                case OriginPosition.Center:
+                    origin = new Vector2(Rect.Width / 2, Rect.Height / 2);
+                    break;
+
+                case OriginPosition.RightSide:
+                    origin = new Vector2(Rect.Width, Rect.Height / 2);
+                    break;
+
+                case OriginPosition.LeftLowerCorner:
+                    origin = new Vector2(0, Rect.Height);
+                    break;
+
+                case OriginPosition.LowerSide:
+                    origin = new Vector2(Rect.Width / 2, Rect.Height);
+                    break;
+
+                case OriginPosition.RightLowerCorner:
+                    origin = new Vector2(Rect.Width, Rect.Height);
+                    break;
+            }
+
 
             if (texture != null)
-                spriteBatch.Draw(texture, Position, Rect, Color.White * Alpha, RotationInRadiance, origin, Scale, SpriteEffects.None, 0.0f);
+                spriteBatch.Draw(texture, Position, Rect, Color.White * Alpha, RotationInRadiance, Origin, Scale, SpriteEffects.None, 0.0f);
         }
     }
 }
