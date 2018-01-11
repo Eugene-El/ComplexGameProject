@@ -13,11 +13,13 @@ namespace StandartGameStructure
         public List<AbstractVisualObject> ObjectsList { get; set; }
 
         public Background Background { get; set; }
+        public Cursor Cursor { get; set; }
 
         public Screen()
         {
             ObjectsList = new List<AbstractVisualObject>();
             Background = new Background();
+            Cursor = new Cursor();
         }
 
 
@@ -28,6 +30,7 @@ namespace StandartGameStructure
             Background.LoadContent();
             foreach (AbstractVisualObject GO in ObjectsList)
                 GO.LoadContent();
+            Cursor.LoadContent();
         }
 
         public void UnloadContent()
@@ -35,6 +38,7 @@ namespace StandartGameStructure
             Background.UnloadContent();
             foreach (AbstractVisualObject GO in ObjectsList)
                 GO.UnloadContent();
+            Cursor.UnloadContent();
         }
 
         public void Update(GameTime gameTime)
@@ -42,6 +46,7 @@ namespace StandartGameStructure
             Background.Update(gameTime);
             foreach (AbstractVisualObject GO in ObjectsList)
                 GO.Update(gameTime);
+            Cursor.Update(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -49,6 +54,7 @@ namespace StandartGameStructure
             Background.Draw(spriteBatch);
             foreach (AbstractVisualObject GO in ObjectsList)
                 GO.Draw(spriteBatch);
+            Cursor.Draw(spriteBatch);
         }
 
         //

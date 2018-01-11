@@ -20,7 +20,7 @@ namespace InfinityAdventures
             player.OriginPosition = OriginPosition.LeftUpperCorner;
             ScreenManager.Instance.CurrnetScreen.ObjectsList.Add(player);
 
-
+            ScreenManager.Instance.CurrnetScreen.Cursor.Path = "cursor";
         }
 
         protected override void Update(GameTime gameTime)

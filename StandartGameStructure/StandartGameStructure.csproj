@@ -45,6 +45,7 @@
     <Compile Include="Background.cs" />
     <Compile Include="BasicGame.cs" />
     <Compile Include="AbstractVisualObject.cs" />
+    <Compile Include="Cursor.cs" />
     <Compile Include="OriginPosition.cs" />
     <Compile Include="VisualImage.cs" />
     <Compile Include="IGameContent.cs" />
