@@ -3,45 +3,80 @@
   <Class Name="StandartGameStructure.AbstractVisualObject">
     <Position X="1.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>CAQCEAAAAAAghoAgAAIAAAAAACgAAhAAAAAAAAAAAAQ=</HashCode>
+      <HashCode>CAQGEAAAAAAghoAgAAIAAAAAACgAAhAAAAAAAAgAAAQ=</HashCode>
       <FileName>AbstractVisualObject.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="StandartGameStructure.BasicGame">
-    <Position X="6" Y="0.5" Width="1.5" />
+    <Position X="14" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAEEAAAAAAAwAAAAAAAAAAAAAEAAgAAAAAAAAAAAQ=</HashCode>
       <FileName>BasicGame.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="StandartGameStructure.Screen" BaseTypeListCollapsed="true">
-    <Position X="9.5" Y="0.5" Width="1.5" />
+    <Position X="5.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAEAAAAAAAAgAAAAAAAAAAAAgAAAAAAAAgAAAAAAQ=</HashCode>
+      <HashCode>AAQAEAAAAQAAAgAAAAAAAAAAAAgAAAAAAAAgAAAAAAQ=</HashCode>
       <FileName>Screen.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="StandartGameStructure.ScreenManager">
-    <Position X="7.75" Y="0.5" Width="1.5" />
+    <Position X="7.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAEAAABgAAAkQAQAAAAEIAAABAAAgQQAAEAAAAAAQ=</HashCode>
       <FileName>ScreenManager.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="StandartGameStructure.VisualImage">
-    <Position X="3" Y="6" Width="1.5" />
+    <Position X="5" Y="6.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
       <FileName>VisualImage.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="StandartGameStructure.VisualText">
-    <Position X="0.5" Y="6" Width="1.5" />
+    <Position X="0.5" Y="6.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAQAAACAAAAAAAAAAAAAAAAAAiAACAAQ=</HashCode>
       <FileName>VisualText.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StandartGameStructure.Background">
+    <Position X="3" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Background.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StandartGameStructure.Cursor">
+    <Position X="5" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Cursor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StandartGameStructure.InputManager">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAgAAAAAAAAAAAAABAAAAARAgAABBAAAA=</HashCode>
+      <FileName>InputManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StandartGameStructure.GameElemetPaterns.MovingElement">
+    <Position X="7" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>GameElemetPaterns\MovingElement.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StandartGameStructure.GameElemetPaterns.BasicPlayer">
+    <Position X="7" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameElemetPaterns\BasicPlayer.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Interface Name="StandartGameStructure.IGameContent">
@@ -51,5 +86,12 @@
       <FileName>IGameContent.cs</FileName>
     </TypeIdentifier>
   </Interface>
+  <Enum Name="StandartGameStructure.OriginPosition">
+    <Position X="11" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAEAEAAAIAAQAAEAACAAAAAAAAAAAAIUAA=</HashCode>
+      <FileName>OriginPosition.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

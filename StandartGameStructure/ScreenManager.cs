@@ -103,8 +103,8 @@ namespace StandartGameStructure
 
         public void Update(GameTime gameTime)
         {
+            InputManager.Instance.Update();
             CurrnetScreen.Update(gameTime);
-
         }
 
         public void Draw(SpriteBatch spriteBatch)

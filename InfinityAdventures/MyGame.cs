@@ -16,8 +16,14 @@ namespace InfinityAdventures
             ScreenManager.Instance.CurrnetScreen.ObjectsList.Add(TO);
 
 
-            VisualImage player = new TestingObject(new Vector2(1000, 200), new Vector2(3), 90, 1.0f, "player");
-            player.OriginPosition = OriginPosition.LeftUpperCorner;
+            VisualImage player = new TestingObject()
+            {
+                Path = "player",
+                Position = new Vector2(500, 600),
+                MoveSpeed = 100,
+                Scale = new Vector2(2)
+                
+            };
             ScreenManager.Instance.CurrnetScreen.ObjectsList.Add(player);
 
             ScreenManager.Instance.CurrnetScreen.Cursor.Path = "cursor";
