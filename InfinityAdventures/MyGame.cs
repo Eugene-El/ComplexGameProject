@@ -18,12 +18,13 @@ namespace InfinityAdventures
 
             VisualImage player = new TestingObject()
             {
-                Path = "player",
+                Path = "playerAnimated",
                 Position = new Vector2(500, 600),
                 MoveSpeed = 100,
                 Scale = new Vector2(2)
-                
             };
+            player.Animation.AmountOfFrames = new Vector2(2, 0);
+
             ScreenManager.Instance.CurrnetScreen.ObjectsList.Add(player);
 
             ScreenManager.Instance.CurrnetScreen.Cursor.Path = "cursor";

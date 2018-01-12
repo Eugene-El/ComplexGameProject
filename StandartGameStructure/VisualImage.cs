@@ -8,13 +8,19 @@ namespace StandartGameStructure
     public class VisualImage : AbstractVisualObject
     {
         public string Path { get; set; }
+        public Animator Animation { get; set; }
 
-        public VisualImage(string path) : base() { Path = path; }
+
+        public VisualImage(string path) : base() { Initialize(path); }
         public VisualImage() : this(String.Empty) { }
-        public VisualImage(Vector2 position, Vector2 scale, float rotation, float alpha, string path) : base(position, scale, rotation, alpha) { Path = path; }
-        public VisualImage(Vector2 position, string path) : base(position) { Path = path; }
+        public VisualImage(Vector2 position, Vector2 scale, float rotation, float alpha, string path) : base(position, scale, rotation, alpha) { Initialize(path); }
+        public VisualImage(Vector2 position, string path) : base(position) { Initialize(path); }
 
-
+        private void Initialize(string path)
+        {
+            Path = path;
+            Animation = new Animator();
+        }
 
         //
 
@@ -44,6 +50,17 @@ namespace StandartGameStructure
 
                 ScreenManager.Instance.GraphicsDevice.SetRenderTarget(null);
             }
+
+
+            VisualImage vi = this;
+            Animation.LoadContent(ref vi);
+        }
+
+        public override void Update(GameTime gameTime)
+        {
+            base.Update(gameTime);
+
+            Animation.Update(gameTime);
         }
 
         //

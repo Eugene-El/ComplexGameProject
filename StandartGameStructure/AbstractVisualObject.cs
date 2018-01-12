@@ -12,7 +12,7 @@ namespace StandartGameStructure
         public Vector2 Position { get; set; }
         public Vector2 Scale { get; set; }
         public float Alpha { get; set; }
-        public Rectangle Rect { get; protected set; }
+        public Rectangle Rect { get; set; }
         
         public float RotationInRadiance { get; set; }
         public float Rotation
@@ -31,6 +31,16 @@ namespace StandartGameStructure
         protected Texture2D texture;
         protected ContentManager content;
         protected RenderTarget2D renderTarget;
+
+        public Vector2 TextureSize
+        {
+            get
+            {
+                if (texture != null)
+                    return new Vector2(texture.Width, texture.Height);
+                return Vector2.Zero;
+            }
+        }
 
         //
 
