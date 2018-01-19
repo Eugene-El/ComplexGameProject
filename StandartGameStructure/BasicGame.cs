@@ -55,7 +55,7 @@ namespace StandartGameStructure
         {
             GraphicsDevice.Clear(Color.Coral);
 
-            spriteBatch.Begin();
+            //spriteBatch.Begin();
             ScreenManager.Instance.Draw(spriteBatch);
             spriteBatch.End();
 

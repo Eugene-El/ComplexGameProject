@@ -15,11 +15,20 @@ namespace StandartGameStructure
         public Background Background { get; set; }
         public Cursor Cursor { get; set; }
 
+        public Camera Camera { get; set; }
+        
+
         public Screen()
         {
             ObjectsList = new List<AbstractVisualObject>();
             Background = new Background();
             Cursor = new Cursor();
+            Camera = new Camera()
+            {
+                //ViewportWidth = 1280,
+                //ViewportHeight = 720
+            };
+
         }
 
 
@@ -43,6 +52,7 @@ namespace StandartGameStructure
 
         public void Update(GameTime gameTime)
         {
+            Camera.Update();
             Background.Update(gameTime);
             foreach (AbstractVisualObject GO in ObjectsList)
                 GO.Update(gameTime);
@@ -51,6 +61,7 @@ namespace StandartGameStructure
 
         public void Draw(SpriteBatch spriteBatch)
         {
+            spriteBatch.Begin(transformMatrix: Camera.TranslationMatrix);
             Background.Draw(spriteBatch);
             foreach (AbstractVisualObject GO in ObjectsList)
                 GO.Draw(spriteBatch);

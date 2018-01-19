@@ -27,6 +27,8 @@ namespace InfinityAdventures
 
             ScreenManager.Instance.CurrnetScreen.ObjectsList.Add(player);
 
+            //ScreenManager.Instance.CurrnetScreen.Camera.Folow(player);
+
             ScreenManager.Instance.CurrnetScreen.Cursor.Path = "cursor";
         }
 
@@ -34,7 +36,7 @@ namespace InfinityAdventures
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
-            
+
             base.Update(gameTime);
         }
         
