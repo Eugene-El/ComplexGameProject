@@ -48,6 +48,7 @@
     <Compile Include="AbstractVisualObject.cs" />
     <Compile Include="Camera.cs" />
     <Compile Include="Cursor.cs" />
+    <Compile Include="GameElemetPaterns\BasicButton.cs" />
     <Compile Include="GameElemetPaterns\BasicPlayer.cs" />
     <Compile Include="GameElemetPaterns\MovingElement.cs" />
     <Compile Include="InputManager.cs" />

@@ -14,6 +14,7 @@ namespace StandartGameStructure
         public Vector2 AmountOfFrames { get; set; }
         public Vector2 CurrentFrame { get; set; }
 
+        public bool Animate { get; set; }
         public int SwitchTime { get; set; }
         private double currentTime;
 
@@ -43,6 +44,7 @@ namespace StandartGameStructure
         {
             AmountOfFrames = Vector2.Zero;
             CurrentFrame = Vector2.Zero;
+            Animate = true;
             SwitchTime = 60;
         }
 
@@ -53,20 +55,25 @@ namespace StandartGameStructure
 
         public void Update(GameTime gameTime)
         {
-            currentTime += gameTime.ElapsedGameTime.TotalMilliseconds;
-            if (currentTime >= SwitchTime)
+            if (Animate)
             {
-                currentTime = 0;
+                currentTime += gameTime.ElapsedGameTime.TotalMilliseconds;
+                if (currentTime >= SwitchTime)
+                {
+                    currentTime = 0;
 
-                if (CurrentFrame.X + 1 <= AmountOfFrames.X)
-                    CurrentFrame += new Vector2(1, 0);
-                else
-                    CurrentFrame = new Vector2(0, CurrentFrame.Y);
-                
+                    if (CurrentFrame.X + 1 <= AmountOfFrames.X)
+                        CurrentFrame += new Vector2(1, 0);
+                    else
+                        CurrentFrame = new Vector2(0, CurrentFrame.Y);
+
+
+                }
 
             }
 
-            visualImage.Rect = new Rectangle((int)CurrentFrame.X * FrameWidth, (int)CurrentFrame.Y * FrameHeight, FrameWidth, FrameHeight);
+            if (visualImage != null)
+                visualImage.Rect = new Rectangle((int)CurrentFrame.X * FrameWidth, (int)CurrentFrame.Y * FrameHeight, FrameWidth, FrameHeight);
         }
     }
 }

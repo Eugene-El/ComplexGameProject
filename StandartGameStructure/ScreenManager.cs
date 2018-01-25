@@ -28,6 +28,7 @@ namespace StandartGameStructure
         private ScreenManager()
         {
             CurrnetScreen = new Screen();
+            ImageTranferStep = 0.1f;
         }
 
         //
@@ -79,12 +80,22 @@ namespace StandartGameStructure
 
         public Vector2 CenterOfScreen { get { return Dimensions / 2; } }
 
-        public Screen CurrnetScreen { get; set; }
-
         public ContentManager Content { get; private set; }
 
         public GraphicsDevice GraphicsDevice { get; set; }
         public SpriteBatch SpriteBatch { get; set; }
+
+
+        // Screen changing staff
+
+        public Screen CurrnetScreen { get; set; }
+        public Screen NextScreen { get; set; }
+        public bool IsTransitioning { get; private set; }
+        public Background TransferImage { get; set; }
+        public float ImageTranferStep { get; set; }
+        private bool transferBack;
+
+        //
 
         //
 
@@ -93,28 +104,93 @@ namespace StandartGameStructure
             Content = new ContentManager(content.ServiceProvider, "Content");
             
             CurrnetScreen.LoadContent();
+            if (TransferImage != null)
+                TransferImage.LoadContent();
         }
 
         public void UnloadContent()
         {
             CurrnetScreen.UnloadContent();
-
+            if (TransferImage != null)
+                TransferImage.UnloadContent();
         }
 
         public void Update(GameTime gameTime)
         {
             InputManager.Instance.Update();
             CurrnetScreen.Update(gameTime);
+
+            if (IsTransitioning)
+            {
+                if (TransferImage != null)
+                {
+                    if (transferBack)
+                    {
+                        if (TransferImage.Alpha - ImageTranferStep >= 0)
+                            TransferImage.Alpha -= ImageTranferStep;
+                        else
+                        {
+                            TransferImage.Alpha = 0;
+                            transferBack = false;
+                            IsTransitioning = false;
+                        }
+                    }
+                    else
+                    {
+                        if (TransferImage.Alpha + ImageTranferStep <= 1)
+                            TransferImage.Alpha += ImageTranferStep;
+                        else
+                        {
+                            TransferImage.Alpha = 1;
+                            transferBack = true;
+                            CurrnetScreen = NextScreen;
+                            NextScreen = null;
+                        }
+                    }
+
+
+                    TransferImage.Update(gameTime);
+                }
+
+            }
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
             CurrnetScreen.Draw(spriteBatch);
 
+            if (IsTransitioning && TransferImage != null)
+                TransferImage.Draw(spriteBatch);
         }
 
         //
-        
 
+        public void TransferScreen()
+        {
+            // Check that screen not already transitioning
+            if (!IsTransitioning)
+            {
+                // If is transfer image
+                IsTransitioning = true;
+                transferBack = false;
+                if (TransferImage != null)
+                {
+                    TransferImage.Alpha = 0;
+                    TransferImage.Position = Vector2.Zero;
+                }
+                else // If not do it momentaly 
+                {
+                    CurrnetScreen = NextScreen;
+                    NextScreen = null;
+                    IsTransitioning = false;
+                }
+            }
+        }
+
+        public void TransferScreen(Screen screen)
+        {
+            NextScreen = screen;
+            TransferScreen();
+        }
     }
 }

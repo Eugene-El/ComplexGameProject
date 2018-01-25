@@ -14,7 +14,6 @@ namespace StandartGameStructure
 
         public Background Background { get; set; }
         public Cursor Cursor { get; set; }
-
         public Camera Camera { get; set; }
         
 

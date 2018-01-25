@@ -9,6 +9,8 @@ namespace StandartGameStructure
 {
     public class Background : VisualImage
     {
+        public Background() : base() { }
+        public Background(string path) : base(path) { }
 
         public override void LoadContent()
         {

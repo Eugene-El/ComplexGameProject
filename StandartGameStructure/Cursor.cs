@@ -10,8 +10,8 @@ namespace StandartGameStructure
 {
     public class Cursor : VisualImage
     {
-        public Cursor(string path) : base(path) { }
-        public Cursor() : base() { }
+        public Cursor(string path) : base(path) { OriginPosition = OriginPosition.LeftUpperCorner; }
+        public Cursor() : base() { OriginPosition = OriginPosition.LeftUpperCorner; }
 
         public override void Update(GameTime gameTime)
         {

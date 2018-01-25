@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using StandartGameStructure;
+using StandartGameStructure.GameElemetPaterns;
 
 namespace InfinityAdventures
 {
@@ -27,9 +28,65 @@ namespace InfinityAdventures
 
             ScreenManager.Instance.CurrnetScreen.ObjectsList.Add(player);
 
+            player.Animation.Animate = false;
+
             //ScreenManager.Instance.CurrnetScreen.Camera.Folow(player);
 
             ScreenManager.Instance.CurrnetScreen.Cursor.Path = "cursor";
+
+            ScreenManager.Instance.TransferImage = new Background("Background/Black");
+            ScreenManager.Instance.ImageTranferStep = 0.03f;
+
+            BasicButton BB = new BasicButton()
+            {
+                Path = "button",
+                Position = new Vector2(1100, 50),
+                Scale = new Vector2(2, 1),
+                Animation = new Animator()
+                {
+                    Animate = false,
+                    AmountOfFrames = new Vector2(1,0)
+                },
+                Text = new VisualText("Font/mainFont", "New game", Color.White)
+            };
+            BB.MouseHover += (obj, args) => {
+                ((BasicButton)obj).Animation.CurrentFrame= new Vector2(1, 0);
+            };
+            BB.MouseOut += (obj, args) => {
+                ((BasicButton)obj).Animation.CurrentFrame = new Vector2(0, 0);
+            };
+            BB.MousePressed += (obj, args) => {
+                ScreenManager.Instance.CurrnetScreen.UnloadContent();
+                Screen newScreen = new Screen();
+                newScreen.Background.Path = "scorpion";
+                ScreenManager.Instance.TransferScreen(newScreen);
+               newScreen.Cursor.Path = "cursor";
+                newScreen.LoadContent();
+            };
+
+
+            ScreenManager.Instance.CurrnetScreen.ObjectsList.Add(BB);
+
+            BasicButton BB2 = new BasicButton()
+            {
+                Path = "button",
+                Position = new Vector2(1100, 110),
+                Scale = new Vector2(2, 1),
+                Animation = new Animator()
+                {
+                    Animate = false,
+                    AmountOfFrames = new Vector2(1, 0)
+                },
+                Text = new VisualText("Font/mainFont", "Load game", Color.White)
+            };
+            BB2.MouseHover += (obj, args) => {
+                ((BasicButton)obj).Animation.CurrentFrame = new Vector2(1, 0);
+            };
+            BB2.MouseOut += (obj, args) => {
+                ((BasicButton)obj).Animation.CurrentFrame = new Vector2(0, 0);
+            };
+
+            ScreenManager.Instance.CurrnetScreen.ObjectsList.Add(BB2);
         }
 
         protected override void Update(GameTime gameTime)
