@@ -11,8 +11,8 @@ namespace StandartGameStructure
 {
     public class BasicGame : Game
     {
-        GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
+        protected GraphicsDeviceManager graphics;
+        protected SpriteBatch spriteBatch;
 
         public BasicGame()
         {
@@ -55,7 +55,7 @@ namespace StandartGameStructure
         {
             GraphicsDevice.Clear(Color.Coral);
 
-            //spriteBatch.Begin();
+            //spriteBatch.Begin(); Have to be commented or deleted
             ScreenManager.Instance.Draw(spriteBatch);
             spriteBatch.End();
 

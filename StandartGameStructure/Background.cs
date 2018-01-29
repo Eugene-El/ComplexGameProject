@@ -16,7 +16,7 @@ namespace StandartGameStructure
         {
             base.LoadContent();
             Position = ScreenManager.Instance.CenterOfScreen;
-            Scale = new Vector2(ScreenManager.Instance.Width / TextureSize.X, ScreenManager.Instance.Height / TextureSize.Y);
+            Scale = ScreenManager.Instance.AbsoluteResolution / new Vector2(TextureSize.X, TextureSize.Y);
         }
     }
 }

@@ -133,7 +133,7 @@ namespace StandartGameStructure
 
 
             if (texture != null)
-                spriteBatch.Draw(texture, Position, Rect, Color.White * Alpha, RotationInRadiance, Origin, Scale, SpriteEffects.None, 0.0f);
+                spriteBatch.Draw(texture, Position * ScreenManager.Instance.WindowResolutionScaling, Rect, Color.White * Alpha, RotationInRadiance, Origin, Scale * ScreenManager.Instance.WindowResolutionScaling, SpriteEffects.None, 0.0f);
         }
     }
 }

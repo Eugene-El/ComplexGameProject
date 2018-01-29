@@ -44,8 +44,16 @@ namespace StandartGameStructure.GameElemetPaterns
 
         public override void Update(GameTime gameTime)
         {
-            Rectangle r = new Rectangle((int)(Position.X-TextureSize.X/2), (int)(Position.Y- TextureSize.Y / 2), (int)TextureSize.X, (int)TextureSize.Y);
-            if (r.Contains(Mouse.GetState().Position))
+            // TODO
+            // Change /2 on origin calcualation
+
+            Rectangle r = new Rectangle(
+                (int)(Position.X - TextureSize.X / 2 / (Animation.AmountOfFrames.X + 1) * Scale.X ), 
+                (int)(Position.Y - TextureSize.Y / 2 / (Animation.AmountOfFrames.Y + 1) * Scale.Y ), 
+                (int)(TextureSize.X / (Animation.AmountOfFrames.X + 1) * Scale.X ),
+                (int)(TextureSize.Y / (Animation.AmountOfFrames.Y + 1) * Scale.Y ));
+
+            if (r.Contains(Mouse.GetState().Position.ToVector2() / ScreenManager.Instance.WindowResolutionScaling))
             {
                 if (!mouseOnButton)
                 {

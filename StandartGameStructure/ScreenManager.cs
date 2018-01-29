@@ -35,6 +35,17 @@ namespace StandartGameStructure
 
         // Window size changing
 
+        public Vector2 WindowResolutionScaling
+        {
+            get
+            {
+                return (Dimensions / AbsoluteResolution);
+            }
+        }
+        
+        public Vector2 AbsoluteResolution { get; set; }
+
+
         private int width, height;
         public Vector2 Dimensions
         {
@@ -78,7 +89,7 @@ namespace StandartGameStructure
 
         //
 
-        public Vector2 CenterOfScreen { get { return Dimensions / 2; } }
+        public Vector2 CenterOfScreen { get { return AbsoluteResolution / 2; } }
 
         public ContentManager Content { get; private set; }
 

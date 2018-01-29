@@ -17,7 +17,7 @@ namespace StandartGameStructure
         {
             base.Update(gameTime);
             
-            Position =  Mouse.GetState().Position.ToVector2();
+            Position =  Mouse.GetState().Position.ToVector2() / ScreenManager.Instance.WindowResolutionScaling;
         }
     }
 }
