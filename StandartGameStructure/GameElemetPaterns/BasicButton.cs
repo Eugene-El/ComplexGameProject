@@ -23,7 +23,7 @@ namespace StandartGameStructure.GameElemetPaterns
 
         public event EventHandler MouseHover;
         public event EventHandler MouseOut;
-        public event EventHandler MousePressed;
+        public event EventHandler Click;
 
         private bool mouseOnButton;
 
@@ -61,7 +61,7 @@ namespace StandartGameStructure.GameElemetPaterns
                     MouseHover?.Invoke(this, new EventArgs());
                 }
                 if (Mouse.GetState().LeftButton == ButtonState.Pressed)
-                    MousePressed?.Invoke(this, new EventArgs());
+                    Click?.Invoke(this, new EventArgs());
             }
             else if (mouseOnButton)
             {

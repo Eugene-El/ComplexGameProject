@@ -31,12 +31,16 @@ namespace StandartGameStructure
 
         public override void LoadContent()
         {
+            if (content != null)
+                content.Dispose();
             content = new ContentManager(ScreenManager.Instance.Content.ServiceProvider, "Content");
 
             spriteFont = content.Load<SpriteFont>(Font);
 
             Rect = new Rectangle(0, 0, (int)spriteFont.MeasureString(Text).X, (int)spriteFont.MeasureString(Text).Y);
 
+            if (renderTarget != null)
+                renderTarget.Dispose();
             renderTarget = new RenderTarget2D(ScreenManager.Instance.GraphicsDevice, (int)spriteFont.MeasureString(Text).X, (int)spriteFont.MeasureString(Text).Y);
 
             ScreenManager.Instance.GraphicsDevice.SetRenderTarget(renderTarget);

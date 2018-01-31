@@ -26,6 +26,8 @@ namespace StandartGameStructure
 
         public override void LoadContent()
         {
+            if (content != null)
+                content.Dispose();
             content = new ContentManager(ScreenManager.Instance.Content.ServiceProvider, "Content");
 
             if (Path != String.Empty)
@@ -35,9 +37,10 @@ namespace StandartGameStructure
             {
                 Rect = new Rectangle(0, 0, texture.Width, texture.Height);
 
+                if (renderTarget != null)
+                    renderTarget.Dispose();
                 renderTarget = new RenderTarget2D(ScreenManager.Instance.GraphicsDevice, texture.Width, texture.Height);
-
-
+                
                 ScreenManager.Instance.GraphicsDevice.SetRenderTarget(renderTarget);
                 ScreenManager.Instance.GraphicsDevice.Clear(Color.Transparent);
 

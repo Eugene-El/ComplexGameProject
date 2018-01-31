@@ -82,7 +82,15 @@ namespace StandartGameStructure
 
         public virtual void UnloadContent()
         {
-            content.Unload();
+            if (content != null)
+            {
+                content.Unload();
+                content.Dispose();
+            }
+            if (texture != null)
+                texture.Dispose();
+            if (renderTarget != null)
+                renderTarget.Dispose();
         }
 
         public virtual void Update(GameTime gameTime)
@@ -134,6 +142,7 @@ namespace StandartGameStructure
 
             if (texture != null)
                 spriteBatch.Draw(texture, Position * ScreenManager.Instance.WindowResolutionScaling, Rect, Color.White * Alpha, RotationInRadiance, Origin, Scale * ScreenManager.Instance.WindowResolutionScaling, SpriteEffects.None, 0.0f);
+
         }
     }
 }

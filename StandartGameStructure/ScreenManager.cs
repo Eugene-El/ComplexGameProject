@@ -29,11 +29,34 @@ namespace StandartGameStructure
         {
             CurrnetScreen = new Screen();
             ImageTranferStep = 0.1f;
+
+            StandartResolutions = new List<Vector2>()
+            {
+                new Vector2(800, 600),
+                new Vector2(1024, 768),
+                new Vector2(1152, 864),
+                new Vector2(1176, 664),
+                new Vector2(1280, 720),
+                new Vector2(1280, 768),
+                new Vector2(1280, 800),
+                new Vector2(1280, 960),
+                new Vector2(1280, 1024),
+                new Vector2(1360, 768),
+                new Vector2(1366, 768),
+                new Vector2(1440, 900),
+                new Vector2(1600, 900),
+                new Vector2(1600, 1024),
+                new Vector2(1680, 1050),
+                new Vector2(1768, 992),
+                new Vector2(1920, 1080)
+            };
         }
 
         //
 
         // Window size changing
+
+        public List<Vector2> StandartResolutions { get; }
 
         public Vector2 WindowResolutionScaling
         {
@@ -85,6 +108,7 @@ namespace StandartGameStructure
         }
 
         public event EventHandler WindowSizeChanged;
+        public event EventHandler ExitTheGame;
 
 
         //
@@ -112,6 +136,9 @@ namespace StandartGameStructure
 
         public void LoadContent(ContentManager content)
         {
+            if (Content != null)
+                Content.Dispose();
+
             Content = new ContentManager(content.ServiceProvider, "Content");
             
             CurrnetScreen.LoadContent();
@@ -124,6 +151,8 @@ namespace StandartGameStructure
             CurrnetScreen.UnloadContent();
             if (TransferImage != null)
                 TransferImage.UnloadContent();
+
+            Content.Unload();
         }
 
         public void Update(GameTime gameTime)
@@ -154,7 +183,9 @@ namespace StandartGameStructure
                         {
                             TransferImage.Alpha = 1;
                             transferBack = true;
+                            CurrnetScreen.UnloadContent();
                             CurrnetScreen = NextScreen;
+                            CurrnetScreen.LoadContent();
                             NextScreen = null;
                         }
                     }
@@ -191,7 +222,11 @@ namespace StandartGameStructure
                 }
                 else // If not do it momentaly 
                 {
+                    if(Content!= null)
+                        CurrnetScreen.UnloadContent();
                     CurrnetScreen = NextScreen;
+                    if (Content != null)
+                        CurrnetScreen.LoadContent();
                     NextScreen = null;
                     IsTransitioning = false;
                 }
@@ -202,6 +237,11 @@ namespace StandartGameStructure
         {
             NextScreen = screen;
             TransferScreen();
+        }
+
+        public void QuitGame()
+        {
+            ExitTheGame?.Invoke(this, new EventArgs());
         }
     }
 }

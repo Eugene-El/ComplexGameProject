@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace StandartGameStructure
 {
-    public class BasicGame : Game
+    public abstract class BasicGame : Game
     {
         protected GraphicsDeviceManager graphics;
         protected SpriteBatch spriteBatch;
@@ -20,6 +20,7 @@ namespace StandartGameStructure
             Content.RootDirectory = "Content";
 
             ScreenManager.Instance.WindowSizeChanged += SetWindowSize;
+            ScreenManager.Instance.ExitTheGame += ExitGame;
 
             ScreenManager.Instance.Dimensions = new Vector2(600, 400);
         }
@@ -41,7 +42,8 @@ namespace StandartGameStructure
         protected override void UnloadContent()
         {
             ScreenManager.Instance.UnloadContent();
-
+            graphics.Dispose();
+            spriteBatch.Dispose();
         }
 
         protected override void Update(GameTime gameTime)
@@ -68,6 +70,8 @@ namespace StandartGameStructure
             graphics.PreferredBackBufferHeight = ScreenManager.Instance.Height;
             graphics.ApplyChanges();
         }
+
+        protected abstract void ExitGame(Object sender, EventArgs args);
 
     }
 }
