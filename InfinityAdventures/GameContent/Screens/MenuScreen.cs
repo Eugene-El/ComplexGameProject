@@ -22,7 +22,7 @@ namespace InfinityAdventures.GameContent
 
             ButtonImplementation(
                 "Button/MainButton",
-                new Vector2(280, 60),
+                new Vector2(20, 20),
                 100,
                 new Vector2(2, 1),
                 "Font/ButtonFont", 
@@ -53,6 +53,7 @@ namespace InfinityAdventures.GameContent
                     Position = firstPosition + new Vector2(0, indentation * i),
                     Scale = scale,
                     Text = new VisualText(font, buttonTexts[i], color),
+                    OriginPosition = OriginPosition.LeftUpperCorner
                 };
                 
 

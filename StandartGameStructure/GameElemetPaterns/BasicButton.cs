@@ -33,7 +33,6 @@ namespace StandartGameStructure.GameElemetPaterns
         {
             base.LoadContent();
             Text.LoadContent();
-            Text.Position = Position;
         }
 
         public override void UnloadContent()
@@ -44,12 +43,9 @@ namespace StandartGameStructure.GameElemetPaterns
 
         public override void Update(GameTime gameTime)
         {
-            // TODO
-            // Change /2 on origin calcualation
-
             Rectangle r = new Rectangle(
-                (int)(Position.X - TextureSize.X / 2 / (Animation.AmountOfFrames.X + 1) * Scale.X ), 
-                (int)(Position.Y - TextureSize.Y / 2 / (Animation.AmountOfFrames.Y + 1) * Scale.Y ), 
+                (int)(Position.X - Origin.X * Scale.X ), 
+                (int)(Position.Y - Origin.Y * Scale.Y ), 
                 (int)(TextureSize.X / (Animation.AmountOfFrames.X + 1) * Scale.X ),
                 (int)(TextureSize.Y / (Animation.AmountOfFrames.Y + 1) * Scale.Y ));
 
@@ -60,7 +56,8 @@ namespace StandartGameStructure.GameElemetPaterns
                     mouseOnButton = true;
                     MouseHover?.Invoke(this, new EventArgs());
                 }
-                if (Mouse.GetState().LeftButton == ButtonState.Pressed)
+                if (InputManager.Instance.PrevMouseState.LeftButton == ButtonState.Pressed &&
+                    InputManager.Instance.CurrentMouseState.LeftButton == ButtonState.Released)
                     Click?.Invoke(this, new EventArgs());
             }
             else if (mouseOnButton)
@@ -68,6 +65,8 @@ namespace StandartGameStructure.GameElemetPaterns
                 mouseOnButton = false;
                 MouseOut?.Invoke(this, new EventArgs());
             }
+
+            Text.Position = Position - Origin * Scale + TextureSize / (Animation.AmountOfFrames + new Vector2(1)) * Scale / new Vector2(2);
 
             base.Update(gameTime);
             Text.Update(gameTime);

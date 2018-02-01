@@ -58,6 +58,20 @@ namespace StandartGameStructure
 
         public List<Vector2> StandartResolutions { get; }
 
+        private bool isFullscreen;
+        public bool IsFullscreen
+        {
+            get
+            {
+                return isFullscreen;
+            }
+            set
+            {
+                isFullscreen = value;
+                FullscreenModeChanged?.Invoke(this, new EventArgs());
+            }
+        }
+
         public Vector2 WindowResolutionScaling
         {
             get
@@ -108,6 +122,7 @@ namespace StandartGameStructure
         }
 
         public event EventHandler WindowSizeChanged;
+        public event EventHandler FullscreenModeChanged;
         public event EventHandler ExitTheGame;
 
 

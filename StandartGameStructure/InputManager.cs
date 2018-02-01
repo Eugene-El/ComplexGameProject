@@ -10,7 +10,10 @@ namespace StandartGameStructure
     public class InputManager
     {
         private KeyboardState curreentKeyState, prevKeyState;
-        
+
+        public MouseState CurrentMouseState { get; private set; }
+        public MouseState PrevMouseState { get; private set; }
+
         // Singleton 
 
         private static InputManager instance;
@@ -36,6 +39,8 @@ namespace StandartGameStructure
         {
             prevKeyState = curreentKeyState;
             curreentKeyState = Keyboard.GetState();
+            PrevMouseState = CurrentMouseState;
+            CurrentMouseState = Mouse.GetState();
         }
 
         public bool KeyPressed(params Keys[] keys)

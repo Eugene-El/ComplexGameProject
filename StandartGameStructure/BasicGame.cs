@@ -21,6 +21,7 @@ namespace StandartGameStructure
 
             ScreenManager.Instance.WindowSizeChanged += SetWindowSize;
             ScreenManager.Instance.ExitTheGame += ExitGame;
+            ScreenManager.Instance.FullscreenModeChanged += ChangeFullscreenMode;
 
             ScreenManager.Instance.Dimensions = new Vector2(600, 400);
         }
@@ -33,7 +34,7 @@ namespace StandartGameStructure
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            
+
             ScreenManager.Instance.GraphicsDevice = GraphicsDevice;
             ScreenManager.Instance.SpriteBatch = spriteBatch;
             ScreenManager.Instance.LoadContent(Content);
@@ -57,7 +58,6 @@ namespace StandartGameStructure
         {
             GraphicsDevice.Clear(Color.Coral);
 
-            //spriteBatch.Begin(); Have to be commented or deleted
             ScreenManager.Instance.Draw(spriteBatch);
             spriteBatch.End();
 
@@ -68,6 +68,12 @@ namespace StandartGameStructure
         {
             graphics.PreferredBackBufferWidth = ScreenManager.Instance.Width;
             graphics.PreferredBackBufferHeight = ScreenManager.Instance.Height;
+            graphics.ApplyChanges();
+        }
+
+        private void ChangeFullscreenMode(Object sender, EventArgs args)
+        {
+            graphics.IsFullScreen = ScreenManager.Instance.IsFullscreen;
             graphics.ApplyChanges();
         }
 
