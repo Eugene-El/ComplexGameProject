@@ -100,6 +100,15 @@ namespace StandartGameStructure
 
         public virtual void Draw(SpriteBatch spriteBatch)
         {
+            OriginStabilization();
+
+            if (texture != null)
+                spriteBatch.Draw(texture, Position * ScreenManager.Instance.WindowResolutionScaling, Rect, Color.White * Alpha, RotationInRadiance, Origin, Scale * ScreenManager.Instance.WindowResolutionScaling, SpriteEffects.None, 0.0f);
+
+        }
+
+        protected void OriginStabilization()
+        {
             switch (OriginPosition)
             {
                 case OriginPosition.LeftUpperCorner:
@@ -138,10 +147,6 @@ namespace StandartGameStructure
                     origin = new Vector2(Rect.Width, Rect.Height);
                     break;
             }
-
-
-            if (texture != null)
-                spriteBatch.Draw(texture, Position * ScreenManager.Instance.WindowResolutionScaling, Rect, Color.White * Alpha, RotationInRadiance, Origin, Scale * ScreenManager.Instance.WindowResolutionScaling, SpriteEffects.None, 0.0f);
 
         }
     }

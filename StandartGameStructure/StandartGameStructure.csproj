@@ -58,6 +58,7 @@
     <Compile Include="Screen.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScreenManager.cs" />
+    <Compile Include="VisualMultiPositionalImage.cs" />
     <Compile Include="VisualText.cs" />
   </ItemGroup>
   <ItemGroup>

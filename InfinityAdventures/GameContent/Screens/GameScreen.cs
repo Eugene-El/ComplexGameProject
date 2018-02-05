@@ -17,13 +17,12 @@ namespace InfinityAdventures.GameContent.Screens
         {
             BasicPlayer bp = new BasicPlayer()
             {
-                MoveSpeed = 200,
-                Path = "player"
+                MoveSpeed = 200
             };
             ObjectsList.Add(bp);
             Camera.Folow(bp);
 
-            Vector2 MapSize = new Vector2(64, 64);
+            Vector2 MapSize = new Vector2(512, 256);
 
             GenerateTiles(Generate((int)MapSize.X, (int)MapSize.Y));
             ScreenManager.Instance.AbsoluteResolution = MapSize * 32;
@@ -31,65 +30,51 @@ namespace InfinityAdventures.GameContent.Screens
 
         private void GenerateTiles(Map map)
         {
-            List<VisualImage> Tiles = new List<VisualImage>();
+            List<VisualMultiPositionalImage> Tiles = new List<VisualMultiPositionalImage>()
+            {
+                new VisualMultiPositionalImage()
+                {
+                    Path = "Tile/Water",
+                    OriginPosition = OriginPosition.LeftUpperCorner,
+                    Animation = new Animator()
+                    {
+                        AmountOfFrames = new Vector2(3, 0),
+                        SwitchTime = 180
+                    }
+                },
+                new VisualMultiPositionalImage()
+                {
+                    Path = "Tile/Sand",
+                    OriginPosition = OriginPosition.LeftUpperCorner
+                },
+                new VisualMultiPositionalImage()
+                {
+                    Path = "Tile/Grass",
+                    OriginPosition = OriginPosition.LeftUpperCorner,
+                    Animation = new Animator()
+                    {
+                        AmountOfFrames = new Vector2(1, 0),
+                        SwitchTime = 180
+                    }
+                },
+                new VisualMultiPositionalImage()
+                {
+                    Path = "Tile/Swamp",
+                    OriginPosition = OriginPosition.LeftUpperCorner,
+                    Animation = new Animator()
+                    {
+                        AmountOfFrames = new Vector2(1, 0),
+                        SwitchTime = 180
+                    }
+                }
+            };
+
 
             for (int j = 0; j < map.Height; j++)
             {
                 for (int i = 0; i < map.Width; i++)
                 {
-                    switch (map.IntMap[j, i])
-                    {
-                        case 0:
-                            Tiles.Add(new VisualImage()
-                            {
-                                Path = "Tile/Water",
-                                OriginPosition = OriginPosition.LeftUpperCorner,
-                                Position = new Vector2(32 * i, 32 * j),
-                                Animation = new Animator()
-                                {
-                                    AmountOfFrames = new Vector2(3, 0),
-                                    SwitchTime = 180
-                                }
-                            });
-                            break;
-
-                        case 1:
-                            Tiles.Add(new VisualImage()
-                            {
-                                Path = "Tile/Sand",
-                                OriginPosition = OriginPosition.LeftUpperCorner,
-                                Position = new Vector2(32 * i, 32 * j),
-                            });
-                            break;
-
-                        case 2:
-                            Tiles.Add(new VisualImage()
-                            {
-                                Path = "Tile/Grass",
-                                OriginPosition = OriginPosition.LeftUpperCorner,
-                                Position = new Vector2(32 * i, 32 * j),
-                                Animation = new Animator()
-                                {
-                                    AmountOfFrames = new Vector2(1, 0),
-                                    SwitchTime = 180
-                                }
-                            });
-                            break;
-
-                        case 3:
-                            Tiles.Add(new VisualImage()
-                            {
-                                Path = "Tile/Swamp",
-                                OriginPosition = OriginPosition.LeftUpperCorner,
-                                Position = new Vector2(32 * i, 32 * j),
-                                Animation = new Animator()
-                                {
-                                    AmountOfFrames = new Vector2(1, 0),
-                                    SwitchTime = 180
-                                }
-                            });
-                            break;
-                    }
+                    Tiles[map.IntMap[j, i]].Positions.Add(new Vector2(i*32, j*32));
                     
                 }
             }
