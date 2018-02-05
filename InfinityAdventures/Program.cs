@@ -2,17 +2,13 @@
 
 namespace InfinityAdventures
 {
-    /// <summary>
-    /// The main class.
-    /// </summary>
     public static class Program
     {
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
         [STAThread]
         static void Main()
         {
+            World.WorldGenerator.VisualizeMap(World.WorldGenerator.Generate(32, 32)).Save("MAP.bmp");
+
             using (var game = new MyGame())
                 game.Run();
         }

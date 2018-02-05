@@ -1,4 +1,5 @@
 ﻿using InfinityAdventures.GameContent.MyElements;
+using InfinityAdventures.GameContent.Screens;
 using Microsoft.Xna.Framework;
 using StandartGameStructure;
 using StandartGameStructure.GameElemetPaterns;
@@ -30,6 +31,10 @@ namespace InfinityAdventures.GameContent
                 new string[] { "Новая игра", "Загрузить", "Настройки", "Титры", "Выход" }
                 );
 
+            buttonsList[0].Click += (s, e) =>
+            {
+                ScreenManager.Instance.TransferScreen(new GameScreen());
+            };
             buttonsList[2].Click += (s, e) =>
             {
                 ScreenManager.Instance.TransferScreen(new OptionsScreen());
