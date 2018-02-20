@@ -43,6 +43,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="GameContent\MyElements\MyButton.cs" />
+    <Compile Include="GameContent\MyElements\MyPlayer.cs" />
     <Compile Include="GameContent\Screens\GameScreen.cs" />
     <Compile Include="GameContent\Screens\MenuScreen.cs" />
     <Compile Include="GameContent\MyElements\MyScreen.cs" />

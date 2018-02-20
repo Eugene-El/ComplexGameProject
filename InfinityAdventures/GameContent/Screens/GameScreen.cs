@@ -15,17 +15,47 @@ namespace InfinityAdventures.GameContent.Screens
     {
         public GameScreen() : base()
         {
-            BasicPlayer bp = new BasicPlayer()
+            Vector2 MapSize = new Vector2(512, 256);
+
+            GenerateTiles(Generate((int)MapSize.X, (int)MapSize.Y));
+
+
+            MyPlayer bp = new MyPlayer()
             {
-                MoveSpeed = 200
+                MoveSpeed = 1200,
+                Border = new Vector2(MapSize.X*32, MapSize.Y*32),
+                //Path = "player",
+                //Scale = new Vector2(2)
+
             };
             ObjectsList.Add(bp);
             Camera.Folow(bp);
 
-            Vector2 MapSize = new Vector2(512, 256);
-
-            GenerateTiles(Generate((int)MapSize.X, (int)MapSize.Y));
-            ScreenManager.Instance.AbsoluteResolution = MapSize * 32;
+            ObjectsList.AddRange(new List<VisualImage>() {
+                new VisualImage()
+                {
+                    Path = "player",
+                    OriginPosition = OriginPosition.LeftUpperCorner
+                },
+                new VisualImage()
+                {
+                    Path = "player",
+                    Position = new Vector2(MapSize.X*32, 0),
+                    OriginPosition = OriginPosition.RightUpperCorner
+                },
+                new VisualImage()
+                {
+                    Path = "player",
+                    Position = new Vector2(0, MapSize.Y*32),
+                    OriginPosition = OriginPosition.LeftLowerCorner
+                },
+                new VisualImage()
+                {
+                    Path = "player",
+                    Position = new Vector2(MapSize.X*32, MapSize.Y*32),
+                    OriginPosition = OriginPosition.RightLowerCorner
+                }
+            });
         }
 
         private void GenerateTiles(Map map)
@@ -75,11 +105,20 @@ namespace InfinityAdventures.GameContent.Screens
                 for (int i = 0; i < map.Width; i++)
                 {
                     Tiles[map.IntMap[j, i]].Positions.Add(new Vector2(i*32, j*32));
-                    
                 }
             }
 
             ObjectsList.AddRange(Tiles);
+        }
+
+        public override void Update(GameTime gameTime)
+        {
+            if (InputManager.Instance.CurrentMouseState.ScrollWheelValue > InputManager.Instance.PrevMouseState.ScrollWheelValue)
+                Camera.Zoom += 0.1f;
+            else if (InputManager.Instance.CurrentMouseState.ScrollWheelValue < InputManager.Instance.PrevMouseState.ScrollWheelValue)
+                Camera.Zoom -= 0.1f;
+
+            base.Update(gameTime);
         }
 
     }

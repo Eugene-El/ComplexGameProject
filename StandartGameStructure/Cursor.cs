@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
 namespace StandartGameStructure
@@ -17,7 +18,16 @@ namespace StandartGameStructure
         {
             base.Update(gameTime);
             
-            Position =  Mouse.GetState().Position.ToVector2() / ScreenManager.Instance.WindowResolutionScaling;
+            Position = (Mouse.GetState().Position.ToVector2() * (1 / ScreenManager.Instance.CurrnetScreen.Camera.Zoom) + ScreenManager.Instance.CurrnetScreen.Camera.Position) / ScreenManager.Instance.WindowResolutionScaling;
+        }
+
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            OriginStabilization();
+
+            if (texture != null)
+                spriteBatch.Draw(texture, Position * ScreenManager.Instance.WindowResolutionScaling, Rect, Color.White * Alpha, RotationInRadiance, Origin, Scale * ScreenManager.Instance.WindowResolutionScaling * (1 / ScreenManager.Instance.CurrnetScreen.Camera.Zoom), SpriteEffects.None, 0.0f);
+
         }
     }
 }

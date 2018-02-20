@@ -49,8 +49,8 @@ namespace StandartGameStructure
                 return Matrix.CreateTranslation(-(int)Position.X,
                    -(int)Position.Y, 0) *
                    Matrix.CreateRotationZ(Rotation) *
-                   Matrix.CreateScale(new Vector3(Zoom, Zoom, 1)) *
-                   Matrix.CreateTranslation(new Vector3(ViewportCenter, 0));
+                   Matrix.CreateScale(new Vector3(Zoom, Zoom, 1));// *
+                   //Matrix.CreateTranslation(new Vector3(ViewportCenter, 0));
             }
         }
 
@@ -70,7 +70,7 @@ namespace StandartGameStructure
         public void Update()
         {
             if (folowObject != null)
-                Position = folowObject.Position;
+                Position = (folowObject.Position - ScreenManager.Instance.AbsoluteResolution/2* (1 / Zoom) ) * ScreenManager.Instance.WindowResolutionScaling;
         }
     }
 }

@@ -22,12 +22,7 @@ namespace StandartGameStructure
             ObjectsList = new List<AbstractVisualObject>();
             Background = new Background();
             Cursor = new Cursor();
-            Camera = new Camera()
-            {
-                //ViewportWidth = 1280,
-                //ViewportHeight = 720
-            };
-
+            Camera = new Camera();
         }
 
 
@@ -49,7 +44,7 @@ namespace StandartGameStructure
             Cursor.UnloadContent();
         }
 
-        public void Update(GameTime gameTime)
+        public virtual void Update(GameTime gameTime)
         {
             Camera.Update();
             Background.Update(gameTime);
